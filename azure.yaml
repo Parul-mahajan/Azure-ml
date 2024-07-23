@@ -12,9 +12,6 @@ jobs:
   pool:
     name: 'Azdemo'  # Change this to your agent pool name
   steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.12.4'
 
   - script: |
       python -m pip install --upgrade pip
