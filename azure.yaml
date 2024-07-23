@@ -14,18 +14,14 @@ jobs:
   steps:
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.12.4'  # Specify the Python version you need
-      addToPath: true
+      versionSpec: '3.11'
 
   - script: |
       python -m pip install --upgrade pip
-
     displayName: 'Install Dependencies'
-    condition: 
 
   - task: CmdLine@2
     inputs:
-        script: |
-          echo Write your commands here
-          
-          echo Hello world
+      script: |
+        echo Write your commands here
+        echo Hello world
