@@ -4,7 +4,7 @@ trigger:
       - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Azdemo
 
 steps:
   - task: UsePythonVersion@0
