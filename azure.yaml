@@ -12,15 +12,10 @@ jobs:
   pool:
     name: 'Azdemo'  # Change this to your agent pool name
   steps:
-
-  - script: |
-      python3 --version
-      pip3 --version
-      python3 -m pip install --upgrade pip
-    displayName: 'Install Dependencies'
-
-  - task: CmdLine@2
+  - task: UsePythonVersion@0
     inputs:
-      script: |
-        echo Write your commands here
-        echo Hello world
+      versionSpec: '3.x'
+      addToPath: false
+      architecture: 'x64'
+
+
