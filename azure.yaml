@@ -1,31 +1,31 @@
 trigger:
-  branches:
-    include:
-      - main
+- main  # Change this to your branch name
 
 pool:
-  name: Azdemo
+  name: 'Azdemo'  # Change this to your agent pool name
+  # demands:
+  #   - agent.name -equals <your_agent_name>  # Replace <your_agent_name> with your self-hosted agent name
 
-steps:
+jobs:
+- job: RunPythonScript
+  displayName: 'Run Python Script Job'
+  pool:
+    name: 'Azdemo'  # Change this to your agent pool name
+  steps:
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.x'
+      versionSpec: '3.12.4'  # Specify the Python version you need
       addToPath: true
 
   - script: |
       python -m pip install --upgrade pip
-    displayName: 'Install dependencies'
 
-  # - script: |
-  #     az login --service-principal --username <client-id> --password <client-secret> --tenant <tenant-id>
-  #     az account set --subscription <subscription-id>
-  #     az group create --name <resource-group> --location <location>
-  #     az deployment group create --resource-group <resource-group> --template-file azuredeploy.json --parameters azuredeploy.parameters.json
-  #   displayName: 'Deploy to Azure'
+    displayName: 'Install Dependencies'
+    condition: 
 
-  # - task: AzureWebApp@1
-  #   inputs:
-  #     azureSubscription: '<azure-subscription>'
-  #     appName: '<app-name>'
-  #     package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
-  #   displayName: 'Deploy to Azure Web App'
+  - task: CmdLine@2
+    inputs:
+        script: |
+          echo Write your commands here
+          
+          echo Hello world
